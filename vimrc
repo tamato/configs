@@ -46,3 +46,14 @@ set laststatus=2
 set nobackup
 set noswapfile
 
+" have vim set the terminal's title.
+set title
+
+set visualbell
+set noerrorbells
+
+
+
+
+
+
