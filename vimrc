@@ -42,4 +42,7 @@ nnoremap <leader>b :ls<cr>:b<space>
 " always show the status line
 set laststatus=2
 
+" don't bother with backup files, they just clutter everything.
+set nobackup
+set noswapfile
 
