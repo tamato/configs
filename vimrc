@@ -6,6 +6,8 @@ set expandtab
 set number
 set relativenumber
 set cursorline
+set ignorecase
+set smartcase
 
 " imap
 " i = insert mode
