@@ -1,3 +1,4 @@
+set nocompatible
 execute pathogen#infect()
 syntax on
 set tabstop=4
@@ -8,35 +9,28 @@ set relativenumber
 set cursorline
 set ignorecase
 set smartcase
-
-" imap
-" i = insert mode
-imap xx <esc>
+set scrolloff=10
+filetype plugin indent on
 
 colorscheme skittles_berry
 
-" nnoremap:
-" n = normal mode
-" nore = no recursion
-" map
-
-" map ctrl+tab and ctrl+shift+tab to cycle buffers
-nnoremap <C-pageup> :bnext<cr>
-nnoremap <C-pagedown> :bprevious<cr>
-
 let mapleader = ","
-nnoremap <leader>d dd
 nnoremap <leader>sv :source $MYVIMRC<cr>
 nnoremap <leader>ev :vsplit $MYVIMRC<cr>
 
 " CtrlP
 nnoremap <c-p> :CtrlP<cr>
 
-" save files
-noremap <c-s> :w<cr>
-
 " more comfy way of entering command mode
-nnoremap <leader>c :
+nnoremap gh <C-w>h
+nnoremap gj <C-w>j
+nnoremap gk <C-w>k
+nnoremap gl <C-w>l
+
+" nnoremap <leader>c :
+nnoremap <leader>w :w<cr>
+nnoremap <leader>q :q<cr>
+nnoremap <leader>wq :wq<cr>
 
 " list and use a buffer
 nnoremap <leader>b :ls<cr>:b<space>
@@ -54,8 +48,40 @@ set title
 set visualbell
 set noerrorbells
 
+" -- nnoremap, normal mode, non recursive command to map keys to a command or a different set of keys
+" [n]noremap = [normal mode] noremap
+" n[nore]map = n [non recursive] map
 
+" :map needs to know which mode to apply to. :map does not apply to all modes. :map is recursive by default
+" other modes are
+" v: visual and select
+" x: visual only
+" s: select only
+" i: insert
+" n: normal
 
+" imap
+" i = insert mode
+imap xx <esc>
+
+" turnon highlighted searches
+set hlsearch
+" set viminfo^=h  " prevent vim from highlighting the last search on start up... doesn't seem to work...
+
+" hit esc twice to disable highlight
+nnoremap <silent> <esc><esc> :nohls<cr>
+
+" Use ctrl+d to highlight all occurances of word under cursor. from:
+"   http://vim.wikia.com/wiki/Highlight_all_search_pattern_matches"
+" nnoremap <F8> :let @/='\<<C-R>=expand("<cword>")<CR>\>'<CR>:set hls<CR>
+
+" use Ctrl+PageUp / Down to move between buffers.
+" nnoremap <c-pageup> :bnext<cr>
+" nnoremap <c-pagedown> :bprevious<cr>
+
+" Hide the cursor line when in InsertMode
+:autocmd InsertLeave * set cursorline
+:autocmd InsertEnter * set nocursorline
 
 
 
