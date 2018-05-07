@@ -19,7 +19,9 @@ nnoremap <leader>sv :source $MYVIMRC<cr>
 nnoremap <leader>ev :vsplit $MYVIMRC<cr>
 
 " CtrlP
-nnoremap <c-p> :CtrlP<cr>
+let g:ctrlp_map = '<c-p>'
+let g:ctrlp_cmd = 'CtrlP'
+" nnoremap <c-p> :CtrlP<cr>
 
 " more comfy way of entering command mode
 nnoremap gh <C-w>h
@@ -30,7 +32,8 @@ nnoremap gl <C-w>l
 " nnoremap <leader>c :
 nnoremap <leader>w :w<cr>
 nnoremap <leader>q :q<cr>
-nnoremap <leader>wq :wq<cr>
+nnoremap <leader>qa :qa<cr>
+nnoremap <leader>x :x<cr>
 
 " list and use a buffer
 nnoremap <leader>b :ls<cr>:b<space>
@@ -84,4 +87,6 @@ nnoremap <silent> <esc><esc> :nohls<cr>
 :autocmd InsertEnter * set nocursorline
 
 
+" syntax highlight for glsl
+autocmd! BufNewFile,BufRead *.vs,*.vert,*.fs,*.frag set ft=glsl
 
