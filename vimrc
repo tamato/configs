@@ -1,5 +1,20 @@
+
+" specify a directory for plugins
+" - for NeoVim: ~/.local/share/nvim/plugged
+" - Avoid using standard Vim directory names like 'plugin'
+" https://github.com/junegunn/vim-plug
+call plug#begin('~/.vim/vimplug') 
+" Must use single quotes, full github path could be used.
+Plug 'https://github.com/shawncplus/skittles_berry.git'
+Plug 'https://github.com/kien/ctrlp.vim.git'
+Plug 'https://github.com/rust-lang/rust.vim.git'
+Plug 'https://github.com/tikhomirov/vim-glsl.git'
+call plug#end()
+" :PlugInstall to install new plugins
+" use :PlugUpdate to update or Install
+" :PlugUpgrade will upgrade VimPlug
+
 set nocompatible
-execute pathogen#infect()
 syntax on
 set tabstop=4
 set shiftwidth=4
@@ -78,14 +93,31 @@ nnoremap <silent> <esc><esc> :nohls<cr>
 "   http://vim.wikia.com/wiki/Highlight_all_search_pattern_matches"
 " nnoremap <F8> :let @/='\<<C-R>=expand("<cword>")<CR>\>'<CR>:set hls<CR>
 
-" use Ctrl+PageUp / Down to move between buffers.
-" nnoremap <c-pageup> :bnext<cr>
-" nnoremap <c-pagedown> :bprevious<cr>
-
 " Hide the cursor line when in InsertMode
 :autocmd InsertLeave * set cursorline
 :autocmd InsertEnter * set nocursorline
 
+" Set working dir to current file
+cmap cd cd %:p:h<cr>
+
+" https://vi.stackexchange.com/questions/8128/how-to-toggle-comments-with-ctrl
+" noremap <expr> <C-m> (synIDattr(synID(line("."), col("."), 0), "name") =~ 'comment\c') ?
+" \ ':<S-Left>exe "<S-Right>normal! ".b:unCommentCommand<CR>' :
+" \ ':<S-Left>exe "<S-Right>normal! ".b:commentCommand<CR>'
+" 
+" autocmd BufReadPost *.[ch] let b:commentCommand='I// '   "Comment for C files
+" autocmd BufReadPost *.[ch] let b:unCommentCommand='^xx' "un-Comment for C files
+
+
+" motions for jumping between '{' when the '{' is not in the first column.
+" part of :help object-motions, :help <S-Left>
+" :map [[ ?{<CR>w99[{
+" ?{        = find a previous '{'
+" <CR>      = enter
+" w99
+" :map ][ /}<CR>b99]}
+" :map ]] j0[[%/{<CR>
+" :map [] k$][%?}<CR>
 
 " syntax highlight for glsl
 autocmd! BufNewFile,BufRead *.vs,*.vert,*.fs,*.frag set ft=glsl
