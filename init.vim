@@ -32,6 +32,7 @@ set relativenumber
 set cursorline
 set ignorecase
 set smartcase
+set hidden
 set scrolloff=10
 filetype plugin indent on
 
