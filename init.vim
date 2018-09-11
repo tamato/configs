@@ -6,15 +6,22 @@
 call plug#begin('~/.vim/vimplug') 
 " Must use single quotes, full github path could be used.
 Plug 'https://github.com/shawncplus/skittles_berry.git'
-Plug 'https://github.com/kien/ctrlp.vim.git'
 Plug 'https://github.com/rust-lang/rust.vim.git'
 Plug 'https://github.com/tikhomirov/vim-glsl.git'
 Plug 'https://github.com/vim-airline/vim-airline'
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'junegunn/fzf.vim',
+Plug 'https://github.com/scrooloose/nerdtree'
 call plug#end()
 " :PlugInstall to install new plugins
 " use :PlugUpdate to update or Install
 " :PlugUpgrade will upgrade VimPlug
 
+set formatoptions-=cro
+" include fzf
+" set rtp+=~/.fzf
+
+set clipboard=unnamed
 set nocompatible
 syntax on
 set tabstop=4
@@ -28,16 +35,18 @@ set smartcase
 set scrolloff=10
 filetype plugin indent on
 
+" Disable auto comment continuation
+set formatoptions-=cro
+
 colorscheme skittles_berry
 
 let mapleader = ","
 nnoremap <leader>sv :source $MYVIMRC<cr>
 nnoremap <leader>ev :vsplit $MYVIMRC<cr>
 
-" CtrlP
-let g:ctrlp_map = '<c-p>'
-let g:ctrlp_cmd = 'CtrlP'
-" nnoremap <c-p> :CtrlP<cr>
+" Fzf or Files
+nnoremap <c-p> :FZF<cr>
+nnoremap ; :Buffers<cr>
 
 " for vim-airline
 let g:airline_powerline_fonts = 1
@@ -55,7 +64,16 @@ noremap <leader>x :x<cr>
 
 " list and use a buffer
 nnoremap <leader>b :ls<cr>:b
-nnoremap <leader>v :ls<cr>:vsp<space>\|<space>b
+nnoremap <leader>v :ls<cr>:vsp<space>\|<space>b<space>
+
+" Center search movements to center screen
+nnoremap n nzz
+nnoremap N Nzz
+nnoremap g# g#zz
+nnoremap g* q*zz
+nnoremap # #zz
+nnoremap * *zz
+
 
 " always show the status line
 set laststatus=2
@@ -84,7 +102,7 @@ set noerrorbells
 
 " imap
 " i = insert mode
-imap qr <esc>
+imap qr <esc>:w<cr>
 
 " turnon highlighted searches
 set hlsearch
@@ -128,4 +146,6 @@ autocmd! BufNewFile,BufRead *.vs,*.vert,*.fs,*.frag set ft=glsl
 
 " Use <Esc> to leave terminal mode
 :tnoremap <Esc> <C-\><C-n>
+
+nnoremap <c-k><c-b> :NERDTreeToggle<cr>
 
