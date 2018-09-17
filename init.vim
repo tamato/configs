@@ -67,13 +67,13 @@ noremap <leader>x :x<cr>
 nnoremap <leader>b :ls<cr>:b
 nnoremap <leader>v :ls<cr>:vsp<space>\|<space>b<space>
 
-" Center search movements to center screen
-nnoremap n nzz
-nnoremap N Nzz
-nnoremap g# g#zz
-nnoremap g* q*zz
-nnoremap # #zz
-nnoremap * *zz
+" Have search movements go to the top screen
+nnoremap n nzt
+nnoremap N Nzt
+nnoremap g# g#zt
+nnoremap g* q*zt
+nnoremap # #zt
+nnoremap * *zt
 
 
 " always show the status line
