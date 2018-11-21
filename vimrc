@@ -73,8 +73,8 @@ nnoremap <leader>x :x<cr>
 nnoremap <leader>k :qa!<cr>
 
 " opens a terminal in current window and searches with ag
-nnoremap <leader>f :term<space>++curwin<space>ag
-nnoremap <leader>j :tab<space>term<space>++curwin<space>ag
+nnoremap <leader>f :term<space>++curwin<space>ag<space>
+nnoremap <leader>j :tab<space>term<space>ag<space>
 
 " NerdTree goes to the current files location
 nnoremap <leader>t :NERDTreeFind<cr>
