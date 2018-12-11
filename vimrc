@@ -49,11 +49,17 @@ let mapleader = ","
 nnoremap <leader>sv :source $MYVIMRC<cr>
 nnoremap <leader>ev :vsplit $MYVIMRC<cr>
 
-" more comfy way of entering command mode
+" more comfy way of moving between windows
 nnoremap gh <C-w>h
 nnoremap gj <C-w>j
 nnoremap gk <C-w>k
 nnoremap gl <C-w>l
+
+" better way of moving windows.
+nnoremap gH <C-w>H
+nnoremap gJ <C-w>J
+nnoremap gK <C-w>K
+nnoremap gL <C-w>L
 
 " used letters:
 " b
@@ -73,17 +79,17 @@ nnoremap <leader>x :x<cr>
 nnoremap <leader>k :qa!<cr>
 
 " opens a terminal in current window and searches with ag
-nnoremap <leader>f :term<space>++curwin<space>ag<space>
+nnoremap <leader>f :term<space>++hidden<space>ag<space>
 nnoremap <leader>j :tab<space>term<space>ag<space>
 
 " NerdTree goes to the current files location
-nnoremap <leader>t :NERDTreeFind<cr>
+nnoremap <leader>tt :NERDTreeFind<cr>
 
 " list and use a buffer
-nnoremap <leader>b :ls<cr>:b
+nnoremap <leader>b :ls<cr>:b<space>
 nnoremap <leader>vb :ls<cr>:vsp<space>\|<space>b<space>
 nnoremap <leader>hb :ls<cr>:sp<space>\|<space>b<space>
-nnoremap <leader>tb :tabnew<cr>:ls<cr>:b<space>
+nnoremap <leader>tb :tab<space>ls<cr>:b<space>
 
 " from: https://stackoverflow.com/questions/22614280/vim-open-file-in-right-split
 set splitright
