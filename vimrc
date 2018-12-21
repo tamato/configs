@@ -143,16 +143,6 @@ nnoremap <silent> <esc><esc> :nohls<cr>
 :autocmd InsertLeave * set cursorline
 :autocmd InsertEnter * set nocursorline
 
-" motions for jumping between '{' when the '{' is not in the first column.
-" part of :help object-motions, :help <S-Left>
-" :map [[ ?{<CR>w99[{
-" ?{        = find a previous '{'
-" <CR>      = enter
-" w99
-" :map ][ /}<CR>b99]}
-" :map ]] j0[[%/{<CR>
-" :map [] k$][%?}<CR>
-
 " syntax highlight for glsl
 autocmd! BufNewFile,BufRead *.vs,*.vert,*.fs,*.frag set ft=glsl
 
