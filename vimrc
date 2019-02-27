@@ -61,18 +61,6 @@ nnoremap gJ <C-w>J
 nnoremap gK <C-w>K
 nnoremap gL <C-w>L
 
-" used letters:
-" b
-" f
-" j
-" k
-" p
-" q
-" t
-" v
-" w
-" x
-
 nnoremap <leader>w :w<cr>
 nnoremap <leader>q :q<cr>
 nnoremap <leader>x :x<cr>
