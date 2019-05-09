@@ -4,6 +4,8 @@
 " - Avoid using standard Vim directory names like 'plugin'
 " Download vim plug from the following:
 "   https://github.com/junegunn/vim-plug
+"   NeoVim - file from vim-plug goes: ~/.local/share/nvim/site/autoload/
+"
 " vim-plug will be stored in a separate area from the plug-ins it downloads
 call plug#begin('~/.local/share/nvim/plugged')
 " Must use single quotes, full github path could be used.
@@ -15,6 +17,7 @@ Plug 'junegunn/fzf.vim',
 Plug 'https://github.com/scrooloose/nerdtree'
 Plug 'scrooloose/nerdcommenter'
 Plug 'ludovicchabant/vim-gutentags'
+Plug 'skywind3000/gutentags_plus'
 "" -------------------- Color Schemes --------------------""
 Plug 'https://github.com/shawncplus/skittles_berry.git'
 Plug 'joshdick/onedark.vim'
@@ -22,12 +25,12 @@ Plug 'marciomazza/vim-brogrammer-theme'
 Plug 'srcery-colors/srcery-vim'
 Plug 'jansenfuller/crayon'
 Plug 'agude/vim-eldar'
-Plug 'fenetikm/falcon'
 Plug 'rakr/vim-one'
 Plug 'KeitaNakamura/neodark.vim'
 Plug 'drewtempelmeyer/palenight.vim'
 "" -------------------- Syntax Highlighting -------------""
 Plug 'bfrg/vim-cpp-modern'
+Plug 'udalov/kotlin-vim'
 call plug#end()
 " :PlugInstall to install new plugins
 " use :PlugUpdate to update or Install
@@ -92,17 +95,19 @@ nnoremap <leader>q :q<cr>
 nnoremap <leader>x :x<cr>
 nnoremap <leader>k :qa!<cr>
 
+" use for grouping regex's
+cnoremap <leader>\ \(\)<Left><Left>
+
+" use for finding exact matches
+cnoremap <leader>< \<\><Left><Left>
+cnoremap <leader>> \<\><Left><Left>
+
 " opens a terminal in current window and searches with ag
 nnoremap <leader>f :term<space>ag<space>
 nnoremap <leader>j :tab<space>term<space>ag<space>
 " list and use a buffer
-nnoremap <leader>b :ls<cr>:b
 nnoremap <leader>db :ls<cr>:bd
 nnoremap <leader>da :w<cr>:%bd<cr>:e#<cr>:bd#<cr>
-":NERDTreeFind<cr><C-w>l
-
-" NerdTree goes to the current files location
-nnoremap <leader>tt :NERDTreeFind<cr>
 
 " from: https://stackoverflow.com/questions/22614280/vim-open-file-in-right-split
 set splitright
@@ -133,7 +138,7 @@ imap qr <esc>:w<cr>
 
 "http://vimcasts.org/episodes/soft-wrapping-text/
 command! -nargs=* Wrap set wrap! linebreak! nolist
-" force learning to trun it on and off when needed.
+" force learning to run it on and off when needed.
 set nowrap
 
 
@@ -142,7 +147,9 @@ set hlsearch
 " set viminfo^=h  " prevent vim from highlighting the last search on start up... doesn't seem to work...
 
 " hit esc twice to disable highlight
-nnoremap <silent> <esc><esc> :nohls<cr>
+nnoremap <silent> <space><space> :nohls<cr>
+
+
 
 " Use ctrl+d to highlight all occurances of word under cursor. from:
 "   http://vim.wikia.com/wiki/Highlight_all_search_pattern_matches"
@@ -150,17 +157,11 @@ nnoremap <silent> <esc><esc> :nohls<cr>
 " syntax highlight for glsl
 autocmd! BufNewFile,BufRead *.vs,*.vert,*.fs,*.frag set ft=glsl
 
-nnoremap <c-k><c-b> :NERDTreeToggle<cr>
-set wildignore+=*\\tmp\\*,*.swp,*.zip,*exe  " windows
-
-" NerdTree setting for bookmarks
-let g:NERDTreeBookmarksFile = "~/config/nvim/.NERDTreeBookmarks"
-
 " NerdCommenter
 " Add a space between comment mark (the delimiter) and code
 let g:NERDSpaceDelims = 1
-:autocmd InsertLeave * set cursorline
-:autocmd InsertEnter * set nocursorline
+autocmd InsertLeave * set cursorline
+autocmd InsertEnter * set nocursorline
 
 " Left align commet marks
 let g:NERDDefaultAlign = 'left'
@@ -179,20 +180,19 @@ nnoremap <leader>ee :e **/*<C-z><S-Tab>
 set path-=/usr/include
 nnoremap <leader>ef :find **/*<C-z><S-Tab>
 
-" NerdTree goes to the current files location
-nnoremap <leader>tt :NERDTreeFind<cr>
-let NERDTreeQuitOnOpen=1
-
 " Gutentag config
-let g:gutentags_project_root = ['.gutctags']
-let g:gutentags_cache_dir = '/home/tamausb/tags'
+let g:gutentags_project_root = ['.project_root']
+let g:gutentags_cache_dir = expand('~/.cache/tags')
 " debug option, read messages with :messages
 let g:gutentags_trace = 0
 " let g:gutentags_modules = ['universal-ctags.ctags']
-let g:gutentags_modules = ['ctags']
 " let g:gutentags_modules = ['cscope']
+" let g:gutentags_modules = ['ctags', 'gtags_cscope']
+let g:gutentags_modules = ['ctags', 'gtags_cscope']
 let g:gutentags_exclude_filetypes = ['*.js']
 let g:gutentags_resolve_symlinks = 1
+" optional to focus to quickfix window after search
+let g:gutentags_plus_switch = 1
 
 " The Silver Searcher
 if executable('ag')
@@ -227,6 +227,19 @@ let g:NERDTrimTrailingWhitespace = 1
 " Enable NERDCommenterToggle to check all selected lines is commented or not 
 let g:NERDToggleCheckAllLines = 1
 
+"==================== Nerd Tree ==================== 
+" NerdTree goes to the current files location
+nnoremap <leader>tt :NERDTreeFind<cr>
+
+" Close NERDTree after opening a file
+let NERDTreeQuitOnOpen=1
+
+nnoremap <c-k><c-b> :NERDTreeToggle<cr>
+set wildignore+=*\\tmp\\*,*.swp,*.zip,*exe  " windows
+
+" NerdTree setting for bookmarks
+let g:NERDTreeBookmarksFile = "~/.local/share/nvim/"
+
 "=================== Cpp Highlight ========================
 " let c_no_curly_error = 1
 
@@ -245,4 +258,12 @@ let g:NERDToggleCheckAllLines = 1
 "     set termguicolors
 "   endif
 " endif
+
+
+" Automatic always clear white space
+nnoremap <F4> :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar><CR>
+
+" reselect visual block after indent
+vnoremap < <gv
+vnoremap > >gv
 

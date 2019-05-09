@@ -1,73 +1,62 @@
 [user]
-	name = Terry Amato
-	email = Terry.Amato@mentice.com
+   name = Terence Amato
+   email = Terence.Amato@TerumoBCT.com
 [push]
     default = simple
 [filter "lfs"]
-	process = git-lfs filter-process
-	required = true
-	clean = git-lfs clean -- %f
-	smudge = git-lfs smudge -- %f
+   process = git-lfs filter-process
+   required = true
+   clean = git-lfs clean -- %f
+   smudge = git-lfs smudge -- %f
 [pull]
     # flattens local changes onto changes from remote. Locally merged commits, will not be flattened.
-	rebase = preserve
+   rebase = preserve
 [merge]
-	ff = only
-	tool = vimdiff3
-	conflictstyle = diff3
+   ; ff = only
+   tool = vimdiff3
+   conflictstyle = diff3
 [fetch]
-	prune = true
-[winUpdater]
-	recentlySeenVersion = 2.19.1.windows.1
+   prune = true
 [alias]
     logd  = log --graph --abbrev-commit --decorate --format=format:'%C(blue)%h%C(reset) - %C(cyan)%aD %C(bold white)- %an%n              %C(cyan)%cD %C(green)(%ar)%C(yellow)%d%Creset%n''          %C(white)%s'
     log1  = log --graph --abbrev-commit --decorate --format=format:'%C(blue)%h%C(reset) - %C(cyan)%aD %C(green)(%ar)%C(yellow)%d%Creset%n''          %C(white)%s %C(bold white)- %an' 
     log1n = log --name-status --graph --abbrev-commit --decorate --format=format:'%C(blue)%h%C(reset) - %C(cyan)%aD %C(green)(%ar)%C(yellow)%d%Creset%n''          %C(white)%s %C(bold white)- %an' 
     loga  = log --graph --abbrev-commit --decorate --format=format:'%C(blue)%h%C(reset) - %C(cyan)%aD [%cD] %C(green)(%ar)<%cr>%C(yellow)%d%Creset%n''          %C(white)%s %C(dim white)- %an' --all
-	# the '!' allows us to use external commands, in this case it is just re-routing to use a different git command
-	# lg = !"git lg1"
+   # the '!' allows us to use external commands, in this case it is just re-routing to use a different git command
+   # lg = !"git lg1"
     # lg = log --format='%C(yellow)%h %C(white)%s %C(bold)%an%Creset%C(yellow)%d'
 
     # Color Format help
     # Colors: reset, normal, black, red, green, yellow, blue, magenta, cyan, white
     # attributes: bold, dim, ul, blink, reverse
     # Format: %C(foreground background attribute)
-	logmine = log --format=format:'%C(blue)%h - %C(green)(%ar) %C(white)%s %C(yellow)%d' --author=Terry
+   logmine = log --format=format:'%C(blue)%h - %C(green)(%ar) %C(white)%s %C(yellow)%d' --author=Terry
 
     shown = show --name-status
 
-	# show files in a commit
-	cm = diff-tree --no-commit-id --name-status -r
-	co = checkout
-	unstage = reset HEAD --
-	whenadded = log --diff-filter=A
+   # show files in a commit
+   cm = diff-tree --no-commit-id --name-status -r
+   co = checkout
+   unstage = reset HEAD --
+   whenadded = log --diff-filter=A
 
-	dt = difftool
+    dt = difftool
     mt = mergetool
 
     # status
     ss = status
 
 [http]
-	sslVerify = false
+   sslVerify = false
 [diff]
-	tool = vimdiff3
+   tool = vimdiff3
 [difftool]
-	prompt = false
+   prompt = false
 [mergetool]
-	prompt = false
+   prompt = false
 [color]
     ui = auto
 [color "diff"]
     commit = yellow reverse
     meta = yellow
     frag = magenta
-[core]
-    whitespace = cr-at-eol
-[difftool "sourcetree"]
-	cmd = '' \"$LOCAL\" \"$REMOTE\"
-[mergetool "sourcetree"]
-	cmd = "'' "
-	trustExitCode = true
-
-
