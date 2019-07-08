@@ -147,7 +147,7 @@ set hlsearch
 " set viminfo^=h  " prevent vim from highlighting the last search on start up... doesn't seem to work...
 
 " hit esc twice to disable highlight
-nnoremap <silent> <space><space> :nohls<cr>
+nnoremap <silent> <leader><leader> :nohls<cr>
 
 
 

@@ -46,6 +46,10 @@
     # status
     ss = status
 
+   ls = !git ss -s | awk '{ print $2 }'
+
+   save = stash push
+
 [http]
    sslVerify = false
 [diff]
