@@ -10,7 +10,8 @@ export ZSH="${HOME}/.oh-my-zsh"
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
 # external theme from:
 #     https://github.com/caiogondim/bullet-train.zsh
-ZSH_THEME="bullet-train"
+#ZSH_THEME="bullet-train"
+ZSH_THEME="agnoster"
 # ZSH_THEME="nanotech"
 # ZSH_THEME="mrtazz"
 # ZSH_THEME="terminalparty"
@@ -101,11 +102,20 @@ source $ZSH/oh-my-zsh.sh
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
+# BULLETTRAIN_GIT_COLORIZE_DIRTY=true
+# BULLETTRAIN_GIT_EXTENDED=false
+# BULLETTRAIN_GIT_BG=green
+# BULLETTRAIN_PROMPT_ORDER=(
+#   time
+#   # context
+#   dir
+#   git
+# )
 
-BULLETTRAIN_PROMPT_ORDER=(
-  time
-  git
-  # context
-  dir
-)
+# Custom stuff that should probably go into a different file...
+export PATH=${HOME}/bin:$PATH
+export COMDIR=${HOME}/code/Common
+
+
+
 

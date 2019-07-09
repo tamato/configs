@@ -9,17 +9,19 @@
 " vim-plug will be stored in a separate area from the plug-ins it downloads
 call plug#begin('~/.local/share/nvim/plugged')
 " Must use single quotes, full github path could be used.
-Plug 'https://github.com/rust-lang/rust.vim.git'
-Plug 'https://github.com/tikhomirov/vim-glsl.git'
-Plug 'https://github.com/vim-airline/vim-airline'
+Plug 'rust-lang/rust.vim'
+Plug 'tikhomirov/vim-glsl'
+Plug 'vim-airline/vim-airline'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim',
-Plug 'https://github.com/scrooloose/nerdtree'
+Plug 'scrooloose/nerdtree'
 Plug 'scrooloose/nerdcommenter'
-Plug 'ludovicchabant/vim-gutentags'
-Plug 'skywind3000/gutentags_plus'
+" Plug 'ludovicchabant/vim-gutentags'
+" Plug 'skywind3000/gutentags_plus'
+Plug 'neoclide/coc.nvim', {'branch':'release'}
+
 "" -------------------- Color Schemes --------------------""
-Plug 'https://github.com/shawncplus/skittles_berry.git'
+Plug 'shawncplus/skittles_berry'
 Plug 'joshdick/onedark.vim'
 Plug 'marciomazza/vim-brogrammer-theme'
 Plug 'srcery-colors/srcery-vim'
@@ -180,19 +182,19 @@ nnoremap <leader>ee :e **/*<C-z><S-Tab>
 set path-=/usr/include
 nnoremap <leader>ef :find **/*<C-z><S-Tab>
 
-" Gutentag config
-let g:gutentags_project_root = ['.project_root']
-let g:gutentags_cache_dir = expand('~/.cache/tags')
-" debug option, read messages with :messages
-let g:gutentags_trace = 0
-" let g:gutentags_modules = ['universal-ctags.ctags']
-" let g:gutentags_modules = ['cscope']
+" " Gutentag config
+" let g:gutentags_project_root = ['.project_root']
+" let g:gutentags_cache_dir = expand('~/.cache/tags')
+" " debug option, read messages with :messages
+" let g:gutentags_trace = 0
+" " let g:gutentags_modules = ['universal-ctags.ctags']
+" " let g:gutentags_modules = ['cscope']
+" " let g:gutentags_modules = ['ctags', 'gtags_cscope']
 " let g:gutentags_modules = ['ctags', 'gtags_cscope']
-let g:gutentags_modules = ['ctags', 'gtags_cscope']
-let g:gutentags_exclude_filetypes = ['*.js']
-let g:gutentags_resolve_symlinks = 1
-" optional to focus to quickfix window after search
-let g:gutentags_plus_switch = 1
+" let g:gutentags_exclude_filetypes = ['*.js']
+" let g:gutentags_resolve_symlinks = 1
+" " optional to focus to quickfix window after search
+" let g:gutentags_plus_switch = 1
 
 " The Silver Searcher
 if executable('ag')
