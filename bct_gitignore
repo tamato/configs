@@ -9,6 +9,10 @@ Quicktype/dist
 *.cmake
 *.a
 *.o
+*.d
+*.hex
+*.elf
+*.map
 *.dlog
 *.pyc
 *.kate-swp
@@ -26,3 +30,9 @@ package-lock.json
 index.html
 tfs*.txt
 yarn.lock
+
+.ccls-root
+.ccls
+.ccls-cache/
+compile_commands.json
+

@@ -11,10 +11,11 @@ export ZSH="${HOME}/.oh-my-zsh"
 # external theme from:
 #     https://github.com/caiogondim/bullet-train.zsh
 #ZSH_THEME="bullet-train"
-ZSH_THEME="agnoster"
+# ZSH_THEME="agnoster"
 # ZSH_THEME="nanotech"
 # ZSH_THEME="mrtazz"
 # ZSH_THEME="terminalparty"
+ZSH_THEME="powerlevel10k/powerlevel10k"
 
 # Set list of themes to load
 # Setting this variable when ZSH_THEME=random
@@ -101,6 +102,9 @@ source $ZSH/oh-my-zsh.sh
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(dir vcs)
+POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status background_jobs time)
 
 # BULLETTRAIN_GIT_COLORIZE_DIRTY=true
 # BULLETTRAIN_GIT_EXTENDED=false
