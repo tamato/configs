@@ -110,6 +110,11 @@ nnoremap <leader>j :tab<space>term<space>ag<space>
 " list and use a buffer
 nnoremap <leader>db :ls<cr>:bd
 nnoremap <leader>da :w<cr>:%bd<cr>:e#<cr>:bd#<cr>
+nnoremap <leader>dt :b#<cr>:bd#<cr>
+
+" split current buffer verticaly or horizontally
+nnoremap <leader>vb :vsplit%<cr>
+nnoremap <leader>hb :splist%<cr>
 
 " from: https://stackoverflow.com/questions/22614280/vim-open-file-in-right-split
 set splitright
