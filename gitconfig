@@ -11,10 +11,6 @@
 [pull]
     # flattens local changes onto changes from remote. Locally merged commits, will not be flattened.
    rebase = preserve
-[merge]
-   ; ff = only
-   tool = vimdiff3
-   conflictstyle = diff3
 [fetch]
    prune = true
 [alias]
@@ -53,11 +49,18 @@
 [http]
    sslVerify = false
 [diff]
-   tool = vimdiff3
+   tool = nvimdiff2
 [difftool]
    prompt = false
+[difftool "nvimdiff2"]
+   cmd = nvim -d $LOCAL $REMOTE
+[merge]
+   ; ff = only
+   tool = nvimdiff4
 [mergetool]
    prompt = false
+[mergetool "nvimdiff4"]
+   cmd = nvim -d $LOCAL $BASE $REMOTE $MERGED -c '$wincmd w' -c 'wincmd J'
 [color]
     ui = auto
 [color "diff"]

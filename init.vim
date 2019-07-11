@@ -19,6 +19,8 @@ Plug 'scrooloose/nerdcommenter'
 " Plug 'ludovicchabant/vim-gutentags'
 " Plug 'skywind3000/gutentags_plus'
 Plug 'neoclide/coc.nvim', {'branch':'release'}
+" Plug 'prabirshrestha/async.vim'
+" Plug 'prabirshrestha/vim-lsp'
 
 "" -------------------- Color Schemes --------------------""
 Plug 'shawncplus/skittles_berry'

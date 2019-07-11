@@ -106,6 +106,11 @@ source $ZSH/oh-my-zsh.sh
 POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(dir vcs)
 POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status background_jobs time)
 
+POWERLEVEL9K_DIR_ETC_FOREGROUND="white"
+POWERLEVEL9K_DIR_HOME_SUBFOLDER_FOREGROUND="white"
+POWERLEVEL9K_DIR_HOME_FOREGROUND="white"
+POWERLEVEL9K_DIR_DEFAULT_FOREGROUND="white"
+
 # BULLETTRAIN_GIT_COLORIZE_DIRTY=true
 # BULLETTRAIN_GIT_EXTENDED=false
 # BULLETTRAIN_GIT_BG=green
@@ -117,9 +122,11 @@ POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status background_jobs time)
 # )
 
 # Custom stuff that should probably go into a different file...
+export EDITOR=nvim
 export PATH=${HOME}/bin:$PATH
 export COMDIR=${HOME}/code/Common
 
-
+export eric=${HOME}/code/Eric
+export orion=${HOME}/code/Orion
 
 

@@ -36,3 +36,4 @@ yarn.lock
 .ccls-cache/
 compile_commands.json
 
+.parserlog
