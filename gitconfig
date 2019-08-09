@@ -43,27 +43,46 @@
     ss = status
 
    ls = !git ss -s | awk '{ print $2 }'
+   showf = !git show --pretty="" --name-only 
 
    save = stash push
 
 [http]
    sslVerify = false
+;----------------------------
 [diff]
-   tool = nvimdiff2
+   tool = p4diff
+   ; tool = nvimdiff2
 [difftool]
    prompt = false
 [difftool "nvimdiff2"]
    cmd = nvim -d $LOCAL $REMOTE
+[difftool "p4diff"]
+   cmd = p4merge "$LOCAL" "$REMOTE" 
+   keepTemporaries = false
+   keepBackup = false
+   trustExitCode = false
+
+;----------------------------
 [merge]
    ; ff = only
-   tool = nvimdiff4
+   tool = p4merge
+   ; tool = nvimdiff4
 [mergetool]
    prompt = false
 [mergetool "nvimdiff4"]
    cmd = nvim -d $LOCAL $BASE $REMOTE $MERGED -c '$wincmd w' -c 'wincmd J'
+[mergetool "p4merge"]
+   cmd = p4merge "$BASE" "$LOCAL" "$REMOTE" "$MERGED"
+   keepTemporaries = false
+   keepBackup = false
+   trustExitCode = false
+
+;----------------------------
 [color]
     ui = auto
 [color "diff"]
     commit = yellow reverse
     meta = yellow
     frag = magenta
+

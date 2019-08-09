@@ -104,7 +104,7 @@ source $ZSH/oh-my-zsh.sh
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(dir vcs)
-POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status background_jobs time)
+POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(vi_mode status background_jobs time)
 
 POWERLEVEL9K_DIR_ETC_FOREGROUND="white"
 POWERLEVEL9K_DIR_HOME_SUBFOLDER_FOREGROUND="white"
@@ -129,4 +129,10 @@ export COMDIR=${HOME}/code/Common
 export eric=${HOME}/code/Eric
 export orion=${HOME}/code/Orion
 
+export priv="/mnt/bctquad3data/RDTFSBUILD/BuildOutput/PrivateBuilds"
+export odev="/mnt/bctquad3data/RDTFSBUILD/BuildOutput/Orion/Orion_Dev"
+export orel="/mnt/bctquad3data/RDTFSBUILD/BuildOutput/Orion/Orion_Rel"
+export edev="/mnt/bctquad3data/RDTFSBUILD/BuildOutput/Common Code/Eric_Dev"
+export erel="/mnt/bctquad3data/RDTFSBUILD/BuildOutput/Common Code/Eric_Rel"
+export code="/home/tamausb/code"
 

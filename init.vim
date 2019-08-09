@@ -71,7 +71,7 @@ autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
 
 colorscheme brogrammer
 
-let mapleader = ","
+let mapleader = "\<Space>"
 nnoremap <leader>sv :source $MYVIMRC<cr>
 nnoremap <leader>ev :vsplit $MYVIMRC<cr>
 
@@ -112,7 +112,7 @@ nnoremap <leader>j :tab<space>term<space>ag<space>
 " list and use a buffer
 nnoremap <leader>db :ls<cr>:bd
 nnoremap <leader>da :w<cr>:%bd<cr>:e#<cr>:bd#<cr>
-nnoremap <leader>dt :b#<cr>:bd#<cr>
+nnoremap <leader>dt :bp<cr>:bd#<cr>
 
 " split current buffer verticaly or horizontally
 nnoremap <leader>vb :vsplit%<cr>
