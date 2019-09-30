@@ -16,8 +16,6 @@ Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim',
 Plug 'scrooloose/nerdtree'
 Plug 'scrooloose/nerdcommenter'
-" Plug 'ludovicchabant/vim-gutentags'
-" Plug 'skywind3000/gutentags_plus'
 Plug 'neoclide/coc.nvim', {'branch':'release'}
 " Plug 'prabirshrestha/async.vim'
 " Plug 'prabirshrestha/vim-lsp'
@@ -72,12 +70,15 @@ autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
 colorscheme brogrammer
 
 let mapleader = "\<Space>"
-nnoremap <leader>sv :source $MYVIMRC<cr>
+
+" nnoremap <leader>sv :source $MYVIMRC<cr>
 nnoremap <leader>ev :vsplit $MYVIMRC<cr>
+au BufWritePost $MYVIMRC so $MYVIMRC
 
 " Fzf or Files
 nnoremap <c-p> :FZF<cr>
 nnoremap <leader>b :Buffers<cr>
+nnoremap <tab> :bn<cr>
 
 " for vim-airline
 let g:airline_powerline_fonts = 1
@@ -94,10 +95,11 @@ nnoremap gJ <C-w>J
 nnoremap gK <C-w>K
 nnoremap gL <C-w>L
 
-nnoremap <leader>w :w<cr>
+nnoremap <leader>w :w<cr>:nohls<cr>
 nnoremap <leader>q :q<cr>
 nnoremap <leader>x :x<cr>
-nnoremap <leader>k :qa!<cr>
+" closes app to much
+" nnoremap <leader>k :qa!<cr>
 
 " use for grouping regex's
 cnoremap <leader>\ \(\)<Left><Left>

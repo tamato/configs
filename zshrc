@@ -121,18 +121,5 @@ POWERLEVEL9K_DIR_DEFAULT_FOREGROUND="white"
 #   git
 # )
 
-# Custom stuff that should probably go into a different file...
-export EDITOR=nvim
-export PATH=${HOME}/bin:$PATH
-export COMDIR=${HOME}/code/Common
-
-export eric=${HOME}/code/Eric
-export orion=${HOME}/code/Orion
-
-export priv="/mnt/bctquad3data/RDTFSBUILD/BuildOutput/PrivateBuilds"
-export odev="/mnt/bctquad3data/RDTFSBUILD/BuildOutput/Orion/Orion_Dev"
-export orel="/mnt/bctquad3data/RDTFSBUILD/BuildOutput/Orion/Orion_Rel"
-export edev="/mnt/bctquad3data/RDTFSBUILD/BuildOutput/Common Code/Eric_Dev"
-export erel="/mnt/bctquad3data/RDTFSBUILD/BuildOutput/Common Code/Eric_Rel"
-export code="/home/tamausb/code"
+source ${HOME}/.profile
 
