@@ -16,7 +16,7 @@ Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim',
 Plug 'scrooloose/nerdtree'
 Plug 'scrooloose/nerdcommenter'
-Plug 'neoclide/coc.nvim', {'branch':'release'}
+" Plug 'neoclide/coc.nvim', {'branch':'release'}
 " Plug 'prabirshrestha/async.vim'
 " Plug 'prabirshrestha/vim-lsp'
 
@@ -57,7 +57,7 @@ set hidden
 set scrolloff=3
 set mouse=a
 
-" toggle whitespace
+" toggle whitespace white space
 noremap <F5> :set list!<CR>
 " set listchars=eol:$,tab:>-,trail:~,extends:>,precedes:<,space:␣
 set listchars=eol:$,tab:>-,trail:~,extends:>,precedes:<,space:.
@@ -95,7 +95,7 @@ nnoremap gJ <C-w>J
 nnoremap gK <C-w>K
 nnoremap gL <C-w>L
 
-nnoremap <leader>w :w<cr>:nohls<cr>
+nnoremap <silent> <leader>w :w<cr>:nohls<cr>:retab<cr>
 nnoremap <leader>q :q<cr>
 nnoremap <leader>x :x<cr>
 " closes app to much
@@ -114,7 +114,7 @@ nnoremap <leader>j :tab<space>term<space>ag<space>
 " list and use a buffer
 nnoremap <leader>db :ls<cr>:bd
 nnoremap <leader>da :w<cr>:%bd<cr>:e#<cr>:bd#<cr>
-nnoremap <leader>dt :bp<cr>:bd#<cr>
+nnoremap <leader>dt :bd<cr>
 
 " split current buffer verticaly or horizontally
 nnoremap <leader>vb :vsplit%<cr>
@@ -271,8 +271,11 @@ let g:NERDTreeBookmarksFile = "~/.local/share/nvim/"
 " endif
 
 
-" Automatic always clear white space
+" Automatic always clear white space whitespace
 nnoremap <F4> :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar><CR>
+
+" convert Tabs to whitespace white space
+" :retab
 
 "=================== CoC ========================
 " use <tab> for trigger completion and navigate to the next complete item

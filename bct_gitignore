@@ -1,35 +1,39 @@
+.tf/
+
 build/
 build.tools/
 build.ut/
+node_modules/
 log/
+Quicktype/
 UI/
-Quicktype/dist
 
-.tf/
-*.cmake
 *.a
 *.o
 *.d
+*.dlog
 *.hex
 *.elf
-*.map
-*.dlog
-*.pyc
 *.kate-swp
+*.map
+*.pyc
 *.sha256sum
-CMakeFiles
-CMakeCache.txt
-.directory
-.settings
+
 .cproject
+.directory
 .project
 .pydevproject
-temp
-node_modules
+.settings
+
+CMakeFiles
+CMakeCache.txt
+tfs*.txt
+
+# mine
+yarn.lock
 package-lock.json
 index.html
-tfs*.txt
-yarn.lock
+temp
 
 .ccls-root
 .ccls
@@ -37,10 +41,6 @@ yarn.lock
 compile_commands.json
 
 .parserlog
-Quicktype/
 
 *~lock.*
-test_notes
-orion_simnodes
-notes
 .vscode/
