@@ -28,7 +28,7 @@
     # Format: %C(foreground background attribute)
    logmine = log --format=format:'%C(blue)%h - %C(green)(%ar) %C(white)%s %C(yellow)%d' --author=Terry
 
-    shown = show --name-status
+   shown = show --name-status
 
    # show files in a commit
    cm = diff-tree --no-commit-id --name-status -r
@@ -36,11 +36,11 @@
    unstage = reset HEAD --
    whenadded = log --diff-filter=A
 
-    dt = difftool
-    mt = mergetool
+   dt = difftool
+   mt = mergetool
 
     # status
-    ss = status
+   ss = status
 
    ls = !git ss -s | awk '{ print $2 }'
    showf = !git show --pretty="" --name-only 
@@ -86,3 +86,5 @@
     meta = yellow
     frag = magenta
 
+[pager]
+	branch = false
