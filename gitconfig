@@ -10,7 +10,7 @@
    smudge = git-lfs smudge -- %f
 [pull]
     # flattens local changes onto changes from remote. Locally merged commits, will not be flattened.
-   rebase = preserve
+	rebase = true
 [fetch]
    prune = true
 [alias]
