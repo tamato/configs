@@ -73,9 +73,9 @@ colorscheme one
 
 let mapleader = "\<Space>"
 
-" nnoremap <leader>sv :source $MYVIMRC<cr>
+nnoremap <leader>sv :source $MYVIMRC<cr>
 nnoremap <leader>ev :vsplit $MYVIMRC<cr>
-au BufWritePost $MYVIMRC so $MYVIMRC
+" au BufWritePost $MYVIMRC so $MYVIMRC
 
 " Fzf or Files
 nnoremap <c-p> :FZF<cr>
@@ -104,11 +104,10 @@ nnoremap <leader>x :x<cr>
 " nnoremap <leader>k :qa!<cr>
 
 " use for grouping regex's
-cnoremap <leader>\ \(\)<Left><Left>
+cabbrev (( \(\)<Left><Left>
 
 " use for finding exact matches
-cnoremap <leader>< \<\><Left><Left>
-cnoremap <leader>> \<\><Left><Left>
+cabbrev << \<\><Left><Left>
 
 " opens a terminal in current window and searches with ag
 nnoremap <leader>f :term<space>ag<space>
@@ -147,7 +146,7 @@ set visualbell
 set noerrorbells
 
 " i = insert mode
-imap qr <esc>:w<cr>:nohls<cr>
+imap xc <esc>:w<cr>:nohls<cr>
 
 "http://vimcasts.org/episodes/soft-wrapping-text/
 command! -nargs=* Wrap set wrap! linebreak! nolist
@@ -162,10 +161,10 @@ set hlsearch
 " hit esc twice to disable highlight
 nnoremap <silent> <leader><leader> :nohls<cr>
 
-
-
 " Use ctrl+d to highlight all occurances of word under cursor. from:
 "   http://vim.wikia.com/wiki/Highlight_all_search_pattern_matches"
+" Can't use ctrl+d, that is used to move a page 1/2 down
+nnoremap <leader>* :let @/='\<<C-R>=expand("<cword>")<CR>\>'<CR>:set hls<CR>
 
 " syntax highlight for glsl
 autocmd! BufNewFile,BufRead *.vs,*.vert,*.fs,*.frag set ft=glsl
