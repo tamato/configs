@@ -1,4 +1,3 @@
-
 " specify a directory for plugins
 " - for NeoVim: ~/.local/share/nvim/plugged
 " - Avoid using standard Vim directory names like 'plugin'
@@ -16,10 +15,8 @@ Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim',
 Plug 'scrooloose/nerdtree'
 Plug 'scrooloose/nerdcommenter'
-" Plug 'neoclide/coc.nvim', {'branch':'release'}
+Plug 'neoclide/coc.nvim', {'branch':'release'}
 " Plug 'prabirshrestha/async.vim'
-" Plug 'prabirshrestha/vim-lsp'
-
 "" -------------------- Color Schemes --------------------""
 Plug 'shawncplus/skittles_berry'
 Plug 'joshdick/onedark.vim'
@@ -89,6 +86,8 @@ nnoremap gh <C-w>h
 nnoremap gj <C-w>j
 nnoremap gk <C-w>k
 nnoremap gl <C-w>l
+" close split, but dont lose buffer
+nnoremap gc <C-w>c 
 
 " better way of moving windows.
 nnoremap gH <C-w>H
@@ -155,6 +154,8 @@ set nowrap
 
 " turnon highlighted searches
 set hlsearch
+let @/ = 'qwerqwerqwer'
+
 " set viminfo^=h  " prevent vim from highlighting the last search on start up... doesn't seem to work...
 
 " hit esc twice to disable highlight
@@ -181,29 +182,6 @@ let g:NERDDefaultAlign = 'left'
 let g:NERDCommentEmptyLines = 1
 " Use <Esc> to leave terminal mode
 tnoremap <Esc> <C-\><C-n>
-tnoremap qr <C-\><C-n>
-
-" Finding files without CtrlP
-set wildcharm=<C-Z>
-" change this to ctrlP at some ponit
-nnoremap <leader>ee :e **/*<C-z><S-Tab>
-
-set path-=/usr/include
-nnoremap <leader>ef :find **/*<C-z><S-Tab>
-
-" " Gutentag config
-" let g:gutentags_project_root = ['.project_root']
-" let g:gutentags_cache_dir = expand('~/.cache/tags')
-" " debug option, read messages with :messages
-" let g:gutentags_trace = 0
-" " let g:gutentags_modules = ['universal-ctags.ctags']
-" " let g:gutentags_modules = ['cscope']
-" " let g:gutentags_modules = ['ctags', 'gtags_cscope']
-" let g:gutentags_modules = ['ctags', 'gtags_cscope']
-" let g:gutentags_exclude_filetypes = ['*.js']
-" let g:gutentags_resolve_symlinks = 1
-" " optional to focus to quickfix window after search
-" let g:gutentags_plus_switch = 1
 
 " The Silver Searcher
 if executable('ag')
@@ -272,7 +250,7 @@ endif
 
 "-------- colorscheme one ----------------
 let g:one_allow_italics = 1
-set background=dark
+" set background=dark
 
 " colorscheme brogrammer
 colorscheme darkspace
@@ -285,21 +263,33 @@ nnoremap <F4> :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar><CR>
 
 "=================== CoC ========================
 " use <tab> for trigger completion and navigate to the next complete item
-" function! s:check_back_space() abort
-"   let col = col('.') - 1
-"   return !col || getline('.')[col - 1]  =~ '\s'
-" endfunction
-"
-" inoremap <silent><expr> <Tab>
-"       \ pumvisible() ? "\<C-n>" :
-"       \ <SID>check_back_space() ? "\<Tab>" :
-"       \ coc#refresh()
-"
-" " Remap keys for gotos
-" nmap <silent> gd <Plug>(coc-definition)
-" nmap <silent> gy <Plug>(coc-type-definition)
-" nmap <silent> gi <Plug>(coc-implementation)
-" nmap <silent> gr <Plug>(coc-references)
+function! s:check_back_space() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~ '\s'
+endfunction
+
+inoremap <silent><expr> <Tab>
+      \ pumvisible() ? "\<C-n>" :
+      \ <SID>check_back_space() ? "\<Tab>" :
+      \ coc#refresh()
+inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+
+" Remap keys for gotos
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gy <Plug>(coc-type-definition)
+nmap <silent> gi <Plug>(coc-implementation)
+nmap <silent> gr <Plug>(coc-references)
+
+" Use K to show documentation in preview window
+nnoremap <silent> K :call <SID>show_documentation()<CR>
+function! s:show_documentation()
+  if (index(['vim','help'], &filetype) >= 0)
+    execute 'h '.expand('<cword>')
+  else
+    call CocAction('doHover')
+  endif
+endfunction
+
 "=================== CoC End ========================
 
 

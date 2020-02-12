@@ -10,7 +10,7 @@
    smudge = git-lfs smudge -- %f
 [pull]
     # flattens local changes onto changes from remote. Locally merged commits, will not be flattened.
-	rebase = true
+   rebase = true
 [fetch]
    prune = true
 [alias]
@@ -51,11 +51,11 @@
    sslVerify = false
 ;----------------------------
 [diff]
-   tool = p4diff
-   ; tool = nvimdiff2
+   ; tool = p4diff
+   tool = nvim
 [difftool]
    prompt = false
-[difftool "nvimdiff2"]
+[difftool "nvim"]
    cmd = nvim -d $LOCAL $REMOTE
 [difftool "p4diff"]
    cmd = p4merge "$LOCAL" "$REMOTE" 
@@ -87,4 +87,4 @@
     frag = magenta
 
 [pager]
-	branch = false
+   branch = false
