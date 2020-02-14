@@ -35,8 +35,8 @@ package-lock.json
 index.html
 temp
 
-.ccls-root
 .ccls
+.ccls-root
 .ccls-cache/
 compile_commands.json
 
