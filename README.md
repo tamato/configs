@@ -13,3 +13,5 @@ vim packages being used:
 
 Added tagging
 add another
+
+Add comment and pay attentino to updating tags
