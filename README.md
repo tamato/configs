@@ -15,3 +15,5 @@ Added tagging
 add another
 
 Add comment and pay attentino to updating tags
+
+now commit to local repo, create tag and push both in one action
