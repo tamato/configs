@@ -11,3 +11,4 @@ vim packages being used:
     rust.vim
     skittles_berry
 
+Added tagging
