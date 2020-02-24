@@ -36,10 +36,6 @@ call plug#end()
 " use :PlugUpdate to update or Install
 " :PlugUpgrade will upgrade VimPlug
 
-" include fzf
-" set rtp+=~/.fzf
-
-
 set clipboard+=unnamed
 set clipboard+=unnamedplus
 set nocompatible
@@ -76,6 +72,9 @@ nnoremap <leader>ev :vsplit $MYVIMRC<cr>
 " Fzf or Files
 nnoremap <c-p> :FZF<cr>
 nnoremap <leader>b :Buffers<cr>
+" use a pop up window
+let g:fzf_layout = { 'window': { 'width': 0.9, 'height': 0.6 } }
+
 nnoremap <tab> :bn<cr>
 
 " for vim-airline
@@ -86,8 +85,7 @@ nnoremap gh <C-w>h
 nnoremap gj <C-w>j
 nnoremap gk <C-w>k
 nnoremap gl <C-w>l
-" close split, but dont lose buffer
-nnoremap gc <C-w>c 
+" nnoremap <C-Left> <C-w>\ <
 
 " better way of moving windows.
 nnoremap gH <C-w>H
@@ -111,13 +109,10 @@ cabbrev <> \<\><Left><Left>
 nnoremap <leader>f :term<space>ag<space>
 nnoremap <leader>j :tab<space>term<space>ag<space>
 " list and use a buffer
-nnoremap <leader>db :ls<cr>:bd
+nnoremap <leader>db :ls<cr>:bd<space>
 nnoremap <leader>da :w<cr>:%bd<cr>:e#<cr>:bd#<cr>
 nnoremap <leader>dt :bd<cr>
-
-" split current buffer verticaly or horizontally
-nnoremap <leader>vb :vsplit%<cr>
-nnoremap <leader>hb :splist%<cr>
+nnoremap <leader>dp :bd#<cr>
 
 " from: https://stackoverflow.com/questions/22614280/vim-open-file-in-right-split
 set splitright
@@ -144,7 +139,7 @@ set visualbell
 set noerrorbells
 
 " i = insert mode
-imap xc <esc>:w<cr>:nohls<cr>
+imap df <esc>:w<cr>:nohls<cr>
 
 "http://vimcasts.org/episodes/soft-wrapping-text/
 command! -nargs=* Wrap set wrap! linebreak! nolist

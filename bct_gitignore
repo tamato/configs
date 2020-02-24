@@ -1,8 +1,11 @@
 .tf/
 
-build/
+build/*
+!build/Config/Generated
+
 build.tools/
 build.ut/
+
 node_modules/
 log/
 Quicktype/
@@ -38,6 +41,7 @@ temp
 .ccls
 .ccls-root
 .ccls-cache/
+.cache-ccls/
 compile_commands.json
 
 .parserlog
