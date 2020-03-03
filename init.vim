@@ -140,7 +140,7 @@ set visualbell
 set noerrorbells
 
 " i = insert mode
-imap xc <esc>:w<cr>:nohls<cr>
+imap df <esc>:w<cr>:nohls<cr>
 
 "http://vimcasts.org/episodes/soft-wrapping-text/
 command! -nargs=* Wrap set wrap! linebreak! nolist
