@@ -72,11 +72,28 @@ nnoremap <leader>ev :vsplit $MYVIMRC<cr>
 
 " Fzf or Files
 nnoremap <c-p> :FZF<cr>
-nnoremap <leader>b :Buffers<cr>
+
+" nnoremap <leader>b :Buffers<cr>
 " use a pop up window
 let g:fzf_layout = { 'window': { 'width': 0.9, 'height': 0.6 } }
 
-nnoremap <tab> :bn<cr>
+function! Bufs()
+   redir => list
+   silent ls
+   redir END
+   return split(list, "\n")
+endfunction
+
+command! BD call fzf#run(fzf#wrap({
+  \ 'source': Bufs(),
+  \ 'sink*': { lines -> execute('bwipeout '.join(map(lines, {_, line -> split(line)[0]}))) },
+  \ 'options': '--multi --reverse --bind ctrl-a:select-all+accept'
+\ }))
+
+nnoremap <leader>db :BD<cr>
+
+nnoremap <tab> :Buffers<cr>
+" nnoremap <tab> :bn<cr>
 
 " for vim-airline
 let g:airline_powerline_fonts = 1
@@ -94,6 +111,15 @@ nnoremap gJ <C-w>J
 nnoremap gK <C-w>K
 nnoremap gL <C-w>L
 
+" maximize current window
+nnoremap g\ <C-w>\|
+
+" max all windows the same size
+nnoremap g= <C-w>=
+
+" increase current window size
+" nnoremap + <C-w>+
+
 nnoremap <silent> <leader>w :w<cr>:nohls<cr>:retab<cr>
 nnoremap <leader>q :q<cr>
 nnoremap <leader>x :x<cr>
@@ -110,7 +136,7 @@ cabbrev <> \<\><Left><Left>
 nnoremap <leader>f :term<space>ag<space>
 nnoremap <leader>j :tab<space>term<space>ag<space>
 " list and use a buffer
-nnoremap <leader>db :ls<cr>:bd<space>
+" nnoremap <leader>db :ls<cr>:bd<space>
 nnoremap <leader>da :w<cr>:%bd<cr>:e#<cr>:bd#<cr>
 nnoremap <leader>dt :bd<cr>
 nnoremap <leader>dp :bd#<cr>
@@ -182,7 +208,7 @@ tnoremap <Esc> <C-\><C-n>
 " The Silver Searcher
 if executable('ag')
   " Use ag over grep
-  set grepprg=ag\ --nogroup\ --nocolor
+  set grepprg=ag\ --nogroup\ --nocolor\ --ignore=csv$\ --ignore=xml$
 endif
 
 " bind \ (backward slash) to grep shortcut
@@ -248,8 +274,8 @@ endif
 let g:one_allow_italics = 1
 " set background=dark
 
-" colorscheme brogrammer
-colorscheme darkspace
+colorscheme brogrammer
+" colorscheme darkspace
 
 " Automatic always clear white space whitespace
 nnoremap <F4> :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar><CR>
