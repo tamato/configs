@@ -53,11 +53,14 @@ set hidden
 set scrolloff=3
 set mouse=a
 set autowrite
+set foldcolumn=2
 
 " toggle whitespace white space
 noremap <F5> :set list!<CR>
 " set listchars=eol:$,tab:>-,trail:~,extends:>,precedes:<,space:␣
 set listchars=eol:$,tab:>-,trail:~,extends:>,precedes:<,space:.
+
+set sidescrolloff=1 sidescroll=5
 
 filetype plugin indent on
 
@@ -117,6 +120,9 @@ nnoremap g\ <C-w>\|
 " max all windows the same size
 nnoremap g= <C-w>=
 
+" Close all other windows
+nnoremap go <C-w>o
+
 " increase current window size
 " nnoremap + <C-w>+
 
@@ -138,7 +144,7 @@ nnoremap <leader>j :tab<space>term<space>ag<space>
 " list and use a buffer
 " nnoremap <leader>db :ls<cr>:bd<space>
 nnoremap <leader>da :w<cr>:%bd<cr>:e#<cr>:bd#<cr>
-nnoremap <leader>dt :bd<cr>
+nnoremap <leader>dt :bn<cr>:bd#<cr>
 nnoremap <leader>dp :bd#<cr>
 
 " from: https://stackoverflow.com/questions/22614280/vim-open-file-in-right-split
@@ -172,6 +178,7 @@ imap df <esc>:w<cr>:nohls<cr>
 command! -nargs=* Wrap set wrap! linebreak! nolist
 " force learning to run it on and off when needed.
 set nowrap
+noremap <F6> :Wrap<CR>
 
 
 " turnon highlighted searches
@@ -274,7 +281,8 @@ endif
 let g:one_allow_italics = 1
 " set background=dark
 
-colorscheme brogrammer
+colorscheme srcery
+" colorscheme brogrammer
 " colorscheme darkspace
 
 " Automatic always clear white space whitespace
