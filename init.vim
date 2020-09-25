@@ -8,16 +8,14 @@
 " vim-plug will be stored in a separate area from the plug-ins it downloads
 call plug#begin('~/.local/share/nvim/plugged')
 " Must use single quotes, full github path could be used.
-Plug 'rust-lang/rust.vim'
-Plug 'tikhomirov/vim-glsl'
 Plug 'vim-airline/vim-airline'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim',
 Plug 'scrooloose/nerdtree'
 Plug 'scrooloose/nerdcommenter'
-" Plug 'neoclide/coc.nvim', {'branch':'release'}
 " Plug 'prabirshrestha/async.vim'
 "" -------------------- Color Schemes --------------------""
+""" search colorscheme
 Plug 'shawncplus/skittles_berry'
 Plug 'joshdick/onedark.vim'
 Plug 'marciomazza/vim-brogrammer-theme'
@@ -32,6 +30,18 @@ Plug 'niklas-8/vim-darkspace'
 Plug 'bfrg/vim-cpp-modern'
 Plug 'udalov/kotlin-vim'
 Plug 'neovim/nvim-lsp'
+Plug 'rust-lang/rust.vim'
+Plug 'tikhomirov/vim-glsl'
+"" -------------------- Git Integration -------------""
+"" from: https://www.youtube.com/watch?v=F7JZdAwGmpU
+Plug 'mhinz/vim-signify'
+Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-rhubarb'
+Plug 'junegunn/gv.vim'
+"" -------------------- Intelisense -------------""
+""" Using ClangD for the lang server
+Plug 'neovim/nvim-lsp'
+" Plug 'neoclide/coc.nvim', {'branch': 'release'}
 call plug#end()
 " :PlugInstall to install new plugins
 " use :PlugUpdate to update or Install
@@ -138,11 +148,7 @@ cabbrev (( \(\)<Left><Left>
 " use for finding exact matches
 cabbrev <> \<\><Left><Left>
 
-" opens a terminal in current window and searches with ag
-nnoremap <leader>f :term<space>ag<space>
-nnoremap <leader>j :tab<space>term<space>ag<space>
 " list and use a buffer
-" nnoremap <leader>db :ls<cr>:bd<space>
 nnoremap <leader>da :w<cr>:%bd<cr>:e#<cr>:bd#<cr>
 nnoremap <leader>dt :bn<cr>:bd#<cr>
 nnoremap <leader>dp :bd#<cr>
@@ -172,7 +178,7 @@ set visualbell
 set noerrorbells
 
 " i = insert mode
-imap df <esc>:w<cr>:nohls<cr>
+imap zx <esc>:w<cr>:nohls<cr>
 
 "http://vimcasts.org/episodes/soft-wrapping-text/
 command! -nargs=* Wrap set wrap! linebreak! nolist
@@ -292,36 +298,23 @@ nnoremap <F4> :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar><CR>
 " :retab
 
 " " =================== CoC ========================
-" " use <tab> for trigger completion and navigate to the next complete item
-" function! s:check_back_space() abort
-"   let col = col('.') - 1
-"   return !col || getline('.')[col - 1]  =~ '\s'
-" endfunction
-"
-" inoremap <silent><expr> <Tab>
-"       \ pumvisible() ? "\<C-n>" :
-"       \ <SID>check_back_space() ? "\<Tab>" :
-"       \ coc#refresh()
-" inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
-"
-" " Remap keys for gotos
-" nmap <silent> gd <Plug>(coc-definition)
-" nmap <silent> gy <Plug>(coc-type-definition)
-" nmap <silent> gi <Plug>(coc-implementation)
-" nmap <silent> gr <Plug>(coc-references)
-"
-" " Use K to show documentation in preview window
-" nnoremap <silent> K :call <SID>show_documentation()<CR>
-" function! s:show_documentation()
-"   if (index(['vim','help'], &filetype) >= 0)
-"     execute 'h '.expand('<cword>')
-"   else
-"     call CocAction('doHover')
-"   endif
-" endfunction
+" source $HOME/.config/nvim/plug-config/coc.vim
 
-" "=================== CoC End ========================
+" "=================== NvimLsp ========================
 
+" lua << EOF
+" require'nvim_lsp'.clangd.setup{}
+" EOF
+
+nnoremap <silent> ga    <CMD>ClangdSwitchSourceHeader<CR>
+" nnoremap <silent> gd    <cmd>lua vim.lsp.buf.declaration()<CR>
+" nnoremap <silent> <c-]> <cmd>lua vim.lsp.buf.definition()<CR>
+" nnoremap <silent> K     <cmd>lua vim.lsp.buf.hover()<CR>
+" nnoremap <silent> gD    <cmd>lua vim.lsp.buf.implementation()<CR>
+" nnoremap <silent> <c-k> <cmd>lua vim.lsp.buf.signature_help()<CR>
+" nnoremap <silent> 1gD   <cmd>lua vim.lsp.buf.type_definition()<CR>
+" nnoremap <silent> gr    <cmd>lua vim.lsp.buf.references()<CR>
+" "=================== NvimLsp End ========================
 
 
 

@@ -41,6 +41,7 @@
 
     # status
    ss = status
+   sst = status --untracked-files=no
 
    ls = !git ss -s | awk '{ print $2 }'
    showf = !git show --pretty="" --name-only 
